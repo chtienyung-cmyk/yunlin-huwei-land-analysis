@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雲林縣虎尾鎮光明段853、853-1地號 — 蜂蜜初級加工可行性分析報告</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-bg: #e8f5e9;
+            --accent: #f9a825;
+            --accent-bg: #fff8e1;
+            --danger: #c62828;
+            --danger-bg: #ffebee;
+            --info: #1565c0;
+            --info-bg: #e3f2fd;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #eeeeee;
+            --gray-300: #e0e0e0;
+            --gray-600: #757575;
+            --gray-800: #424242;
+            --gray-900: #212121;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Microsoft JhengHei", "Noto Sans TC", "Segoe UI", sans-serif;
+            color: var(--gray-900);
+            background: var(--gray-100);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .page-wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
+        }
+
+        /* Header */
+        .report-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1b5e20 100%);
+            color: #fff;
+            padding: 48px 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .report-header::after {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 200px; height: 200px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        .report-header .subtitle {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 12px;
+        }
+        .report-header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .report-header .meta {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-top: 16px;
+        }
+
+        /* Content */
+        .content { padding: 40px 48px 60px; }
+
+        .section { margin-bottom: 40px; }
+        .section:last-child { margin-bottom: 0; }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .sub-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin: 24px 0 12px;
+            padding-left: 12px;
+            border-left: 4px solid var(--primary-light);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        thead th {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+        tbody td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        tbody tr:nth-child(even) { background: var(--gray-50); }
+        tbody tr:hover { background: var(--primary-bg); }
+        td.num-cell { text-align: right; font-variant-numeric: tabular-nums; }
+        td.highlight {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Info boxes */
+        .box {
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin: 16px 0;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .box-warn {
+            background: var(--accent-bg);
+            border-left: 4px solid var(--accent);
+        }
+        .box-danger {
+            background: var(--danger-bg);
+            border-left: 4px solid var(--danger);
+        }
+        .box-info {
+            background: var(--info-bg);
+            border-left: 4px solid var(--info);
+        }
+        .box-success {
+            background: var(--primary-bg);
+            border-left: 4px solid var(--primary-light);
+        }
+        .box strong { display: block; margin-bottom: 4px; }
+
+        /* Feasibility rating */
+        .rating-table td:first-child { width: 220px; }
+        .stars { letter-spacing: 2px; }
+        .star-high { color: var(--primary); font-weight: 700; }
+        .star-mid { color: var(--accent); font-weight: 700; }
+        .star-low { color: var(--danger); font-weight: 700; }
+
+        /* Bottleneck diagram */
+        .bottleneck {
+            background: var(--gray-100);
+            border-radius: 10px;
+            padding: 24px 28px;
+            margin: 20px 0;
+            font-family: "Consolas", "Source Code Pro", monospace;
+            font-size: 14px;
+            line-height: 2;
+        }
+        .bottleneck .line {
+            display: flex;
+            justify-content: space-between;
+        }
+        .bottleneck .divider {
+            border-top: 2px dashed var(--gray-300);
+            margin: 8px 0;
+        }
+        .bottleneck .result {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        /* Layout diagram */
+        .layout-table td:first-child {
+            width: 180px;
+            font-weight: 600;
+        }
+
+        /* Steps */
+        .steps { counter-reset: step; list-style: none; padding: 0; }
+        .steps li {
+            position: relative;
+            padding: 16px 20px 16px 56px;
+            margin-bottom: 12px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+            counter-increment: step;
+        }
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 16px; top: 16px;
+            width: 28px; height: 28px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .steps li strong { color: var(--primary); }
+
+        /* Mortgage info */
+        .mortgage-summary {
+            display: flex;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        .mortgage-card {
+            flex: 1;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        .mortgage-card .label {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 4px;
+        }
+        .mortgage-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        /* Footer */
+        .report-footer {
+            background: var(--gray-100);
+            padding: 24px 48px;
+            font-size: 12px;
+            color: var(--gray-600);
+            border-top: 1px solid var(--gray-200);
+            line-height: 1.8;
+        }
+
+        /* Links section */
+        .link-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .link-card {
+            display: block;
+            padding: 16px 18px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--gray-800);
+            transition: all 0.2s;
+        }
+        .link-card:hover {
+            border-color: var(--primary-light);
+            background: var(--primary-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .link-card .link-tag {
+            display: inline-block;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .tag-law { background: #e8eaf6; color: #283593; }
+        .tag-gov { background: #e0f2f1; color: #00695c; }
+        .tag-apply { background: #fff3e0; color: #e65100; }
+        .tag-ref { background: #fce4ec; color: #c62828; }
+        .link-card .link-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--primary);
+        }
+        .link-card .link-desc {
+            font-size: 12px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        /* Print */
+        @media print {
+            body { background: #fff; font-size: 13px; }
+            .page-wrapper { box-shadow: none; }
+            .report-header { padding: 32px; }
+            .content { padding: 32px; }
+            .section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+
+        <!-- Header -->
+        <div class="report-header">
+            <div class="subtitle">Land Use Feasibility Report</div>
+            <h1>雲林縣虎尾鎮光明段 853、853-1 地號<br>蜂蜜初級加工可行性分析報告</h1>
+            <div class="meta">
+                報告日期：中華民國 115 年 4 月 10 日 ｜ 委託單位：情人蜂蜜股份有限公司
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- Section 1: 土地基本資料 -->
+            <div class="section">
+                <div class="section-title"><span class="num">1</span> 土地基本資料</div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>853 地號</th>
+                            <th>853-1 地號</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>土地坐落</td>
+                            <td colspan="2">雲林縣虎尾鎮光明段</td>
+                        </tr>
+                        <tr>
+                            <td>面積</td>
+                            <td class="num-cell">2,500.00 ㎡</td>
+                            <td class="num-cell">1,612.96 ㎡</td>
+                        </tr>
+                        <tr>
+                            <td>合計面積</td>
+                            <td colspan="2" class="highlight" style="text-align:right;">4,112.96 ㎡（約 1,244 坪）</td>
+                        </tr>
+                        <tr>
+                            <td>公告土地現值（115年1月）</td>
+                            <td class="num-cell">4,200 元/㎡</td>
+                            <td class="num-cell">4,200 元/㎡</td>
+                        </tr>
+                        <tr>
+                            <td>當期申報地價</td>
+                            <td class="num-cell">880 元/㎡</td>
+                            <td class="num-cell">880 元/㎡</td>
+                        </tr>
+                        <tr>
+                            <td>所有權人</td>
+                            <td colspan="2">黃○○（權利範圍：全部 1/1）</td>
+                        </tr>
+                        <tr>
+                            <td>取得原因／日期</td>
+                            <td colspan="2">贈與／民國 109 年 3 月 17 日</td>
+                        </tr>
+                        <tr>
+                            <td>使用分區</td>
+                            <td colspan="2" style="color:var(--danger); font-weight:600;">謄本記載（空白），需另行確認為都市計畫農業區</td>
+                        </tr>
+                        <tr>
+                            <td>使用地類別</td>
+                            <td colspan="2">（空白）</td>
+                        </tr>
+                        <tr>
+                            <td>地上建物</td>
+                            <td colspan="2">無</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="sub-title">抵押權現況</h3>
+                <div class="mortgage-summary">
+                    <div class="mortgage-card">
+                        <div class="label">853 地號 — 彰化銀行最高限額抵押權</div>
+                        <div class="value">1,320 萬元</div>
+                        <div class="label">確定期日：132年3月5日</div>
+                    </div>
+                    <div class="mortgage-card">
+                        <div class="label">853-1 地號 — 彰化銀行最高限額抵押權</div>
+                        <div class="value">840 萬元</div>
+                        <div class="label">確定期日：139年8月6日</div>
+                    </div>
+                </div>
+
+                <div class="box box-warn">
+                    <strong>提醒</strong>
+                    謄本上使用分區及使用地類別均顯示「空白」，建議先至雲林縣政府都市計畫科或虎尾鎮公所申請「都市計畫土地使用分區證明」，以正式文件確認分區類別，作為後續申請之依據。
+                </div>
+            </div>
+
+            <!-- Section 2: 法令可行性分析 -->
+            <div class="section">
+                <div class="section-title"><span class="num">2</span> 法令可行性分析</div>
+                <p style="margin-bottom:16px;">以下針對都市計畫農業區上設置蜂蜜初級加工設施，分析三種可能的法律路徑：</p>
+
+                <!-- 路徑一 -->
+                <h3 class="sub-title">路徑一：農產品初級加工場登記（最可能的合法路徑）</h3>
+                <p>依據 <strong>農產品生產及驗證管理法第18條</strong> 及 <strong>農產品初級加工場管理辦法</strong>：</p>
+                <table>
+                    <thead>
+                        <tr><th>項目</th><th>內容</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>制度目的</td>
+                            <td>讓農民可在農地上從事農產品初級加工（乾燥、粉碎、碾製、焙炒、殺菁、醃漬、萃取、過濾、壓榨等），<strong>無須取得工廠登記</strong></td>
+                        </tr>
+                        <tr>
+                            <td>適用加工項目</td>
+                            <td>蜂蜜屬農業部公告之初級加工品項，過濾、濃縮、充填包裝等均屬初級加工範疇</td>
+                        </tr>
+                        <tr>
+                            <td>申請資格</td>
+                            <td>須為<strong>農民、農民團體或農業企業機構</strong>；需具備農保資格或實際從農證明</td>
+                        </tr>
+                        <tr>
+                            <td>加工場面積上限</td>
+                            <td style="color:var(--primary); font-weight:700;">200 ㎡ 以下（約 60.5 坪）</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="box box-info">
+                    <strong>關鍵問題</strong>
+                    農產品初級加工場管理辦法主要針對<strong>非都市土地農牧用地</strong>設計，對於<strong>都市計畫農業區</strong>的適用性存在模糊地帶。實務上須向雲林縣政府農業處及都市計畫科雙重確認。
+                </div>
+
+                <!-- 路徑二 -->
+                <h3 class="sub-title">路徑二：農業用地容許使用（農業設施）</h3>
+                <p>依據 <strong>申請農業用地作農業設施容許使用審查辦法</strong>：</p>
+                <table>
+                    <thead>
+                        <tr><th>項目</th><th>內容</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>可申請設施</td>
+                            <td>農產品集貨包裝場、農產品加工室等與農業經營相關設施</td>
+                        </tr>
+                        <tr>
+                            <td>法令限制</td>
+                            <td>都市計畫農業區的容許使用項目，需依<strong>都市計畫法台灣省施行細則第27條</strong>所列為準</td>
+                        </tr>
+                        <tr>
+                            <td>建蔽率/面積</td>
+                            <td>農業設施的樓地板面積、建蔽率等有嚴格限制</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 路徑三 -->
+                <h3 class="sub-title">路徑三：工廠登記</h3>
+                <table>
+                    <thead>
+                        <tr><th>項目</th><th>內容</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>法令依據</td>
+                            <td>工廠管理輔導法</td>
+                        </tr>
+                        <tr>
+                            <td>前提條件</td>
+                            <td>土地使用分區必須<strong>容許設廠</strong></td>
+                        </tr>
+                        <tr>
+                            <td>農業區適用性</td>
+                            <td style="color:var(--danger); font-weight:700;">都市計畫農業區原則上不容許設立工廠，即使是低污染事業亦然</td>
+                        </tr>
+                        <tr>
+                            <td>替代方案</td>
+                            <td>須透過都市計畫變更（變更為工業區或特定專用區），但程序冗長且不確定性極高</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 可行性總表 -->
+                <h3 class="sub-title">可行性綜合評估</h3>
+                <table class="rating-table">
+                    <thead>
+                        <tr><th>路徑</th><th>可行性</th><th>說明</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>農產品初級加工場</td>
+                            <td class="stars star-high">&#9733;&#9733;&#9733;&#9734;&#9734;</td>
+                            <td>最可行路徑，但需確認都市計畫農業區適用性</td>
+                        </tr>
+                        <tr>
+                            <td>農業設施容許使用</td>
+                            <td class="stars star-mid">&#9733;&#9733;&#9734;&#9734;&#9734;</td>
+                            <td>可作為加工室使用，但規模受限</td>
+                        </tr>
+                        <tr>
+                            <td>工廠登記</td>
+                            <td class="stars star-low">&#9733;&#9734;&#9734;&#9734;&#9734;</td>
+                            <td>都市計畫農業區原則不容許設廠</td>
+                        </tr>
+                        <tr>
+                            <td>都市計畫變更</td>
+                            <td class="stars star-low">&#9733;&#9734;&#9734;&#9734;&#9734;</td>
+                            <td>曠日費時，不建議作為主要策略</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Section 3: 可建設施面積分析 -->
+            <div class="section">
+                <div class="section-title"><span class="num">3</span> 可建設施面積分析</div>
+
+                <h3 class="sub-title">都市計畫農業區建築限制</h3>
+                <p>依 <strong>都市計畫法台灣省施行細則</strong>，農業區建蔽率為 <strong>10%</strong>：</p>
+                <table>
+                    <thead>
+                        <tr><th>地號</th><th>土地面積</th><th>最大建築面積（10%）</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>853</td>
+                            <td class="num-cell">2,500.00 ㎡</td>
+                            <td class="num-cell">250.00 ㎡</td>
+                        </tr>
+                        <tr>
+                            <td>853-1</td>
+                            <td class="num-cell">1,612.96 ㎡</td>
+                            <td class="num-cell">161.30 ㎡</td>
+                        </tr>
+                        <tr style="background:var(--primary-bg); font-weight:700;">
+                            <td>合計</td>
+                            <td class="num-cell">4,112.96 ㎡</td>
+                            <td class="num-cell highlight">411.30 ㎡</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="sub-title">面積瓶頸分析</h3>
+                <div class="bottleneck">
+                    <div class="line">
+                        <span>都市計畫建蔽率上限</span>
+                        <span>411.30 ㎡（約 124 坪）</span>
+                    </div>
+                    <div class="line">
+                        <span>初級加工場面積上限</span>
+                        <span style="color:var(--danger); font-weight:700;">200.00 ㎡（約 60 坪） &larr; 瓶頸</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="line result">
+                        <span>實際可用加工場面積</span>
+                        <span>200 ㎡（約 60 坪）</span>
+                    </div>
+                </div>
+
+                <div class="box box-success">
+                    <strong>說明</strong>
+                    200 ㎡ 為<strong>加工作業場所</strong>之面積上限。其他附屬設施（原料倉庫、成品倉庫、辦公室、衛生設施等）不計入此限制，但整體建築面積仍受建蔽率 10% 之約束。
+                </div>
+
+                <h3 class="sub-title">建議空間配置方案</h3>
+                <table class="layout-table">
+                    <thead>
+                        <tr><th>設施項目</th><th>預估面積</th><th>說明</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>加工作業區</td>
+                            <td class="num-cell">200 ㎡</td>
+                            <td>初級加工場上限（過濾、濃縮、充填包裝）</td>
+                        </tr>
+                        <tr>
+                            <td>原料／成品倉儲</td>
+                            <td class="num-cell">80 – 100 ㎡</td>
+                            <td>附屬設施</td>
+                        </tr>
+                        <tr>
+                            <td>辦公／衛生／休息區</td>
+                            <td class="num-cell">50 – 80 ㎡</td>
+                            <td>附屬設施</td>
+                        </tr>
+                        <tr style="background:var(--primary-bg); font-weight:700;">
+                            <td>合計建築面積</td>
+                            <td class="num-cell">約 330 – 380 ㎡</td>
+                            <td>未超過建蔽率上限 411 ㎡</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Section 4: 特別提醒事項 -->
+            <div class="section">
+                <div class="section-title"><span class="num">4</span> 特別提醒事項</div>
+
+                <div class="box box-warn">
+                    <strong>抵押權注意</strong>
+                    兩筆土地均設有彰化銀行最高限額抵押權（合計 2,160 萬元），若進行開發或設施建設，需注意貸款條件是否容許土地用途變更或新建建築。
+                </div>
+
+                <div class="box box-warn">
+                    <strong>建築許可</strong>
+                    土地上目前無建物登記，設置加工場需新建建築物，須先取得建築許可。建築許可之核發亦受制於使用分區容許項目。
+                </div>
+
+                <div class="box box-success">
+                    <strong>有利條件</strong>
+                    情人蜂蜜股份有限公司已取得 ISO 22000、HACCP、FSSC 22000 等國際認證，在申請初級加工場登記時，將有助於審查通過。
+                </div>
+
+                <div class="box box-danger">
+                    <strong>面積不足之替代方案</strong>
+                    若 200 ㎡ 之加工空間不敷營運需求，可考慮：<br>
+                    (1) 僅將部分初級加工工序（如過濾、濃縮）設於本基地，其餘在土庫鎮現有廠區處理<br>
+                    (2) 申請農業設施容許使用（農產品集貨包裝場），不走初級加工場制度<br>
+                    (3) 注意：面積超過 200 ㎡ 即須取得工廠登記，而都市計畫農業區原則不容許設廠
+                </div>
+            </div>
+
+            <!-- Section 5: 建議行動步驟 -->
+            <div class="section">
+                <div class="section-title"><span class="num">5</span> 建議行動步驟</div>
+
+                <ol class="steps">
+                    <li>
+                        <strong>確認使用分區</strong><br>
+                        至雲林縣政府都市計畫科或虎尾鎮公所申請「都市計畫土地使用分區證明」，以正式文件確認土地確實位於農業區及其細部分區類別。
+                    </li>
+                    <li>
+                        <strong>確認業主農民身分</strong><br>
+                        確認所有權人是否具備農保資格或實際從農證明，此為申請農產品初級加工場之前提要件。
+                    </li>
+                    <li>
+                        <strong>向雲林縣政府諮詢</strong><br>
+                        &bull; <strong>農業處</strong>：確認蜂蜜初級加工場是否可在都市計畫農業區設置<br>
+                        &bull; <strong>都市計畫科</strong>：確認農業區容許使用項目是否涵蓋農產品加工設施<br>
+                        &bull; <strong>建設處（工商科）</strong>：確認工廠登記之可能性
+                    </li>
+                    <li>
+                        <strong>評估產能需求</strong><br>
+                        評估情人蜂蜜之加工產能需求，確認 200 ㎡（約 60 坪）之加工空間是否足以符合營運規劃，據以決定是否推進本方案或另覓其他用地。
+                    </li>
+                    <li>
+                        <strong>銀行端確認</strong><br>
+                        向彰化銀行確認現有抵押權條件下，是否容許進行新建建築及用途調整。
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Section 6: 相關法規連結 -->
+            <div class="section">
+                <div class="section-title"><span class="num">6</span> 相關法規與參考連結</div>
+
+                <h3 class="sub-title">核心法規</h3>
+                <div class="link-grid">
+                    <a class="link-card" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=M0030102" target="_blank">
+                        <span class="link-tag tag-law">法規</span>
+                        <div class="link-title">農產品初級加工場管理辦法</div>
+                        <div class="link-desc">全國法規資料庫 — 完整條文，含加工場面積上限200㎡等核心規定</div>
+                    </a>
+                    <a class="link-card" href="https://law.moa.gov.tw/LawContent.aspx?id=GL001127" target="_blank">
+                        <span class="link-tag tag-law">法規</span>
+                        <div class="link-title">農產品初級加工場管理辦法（農業部版）</div>
+                        <div class="link-desc">農業部主管法規共用系統 — 含最新修正沿革</div>
+                    </a>
+                    <a class="link-card" href="https://glrs.moi.gov.tw/LawContent.aspx?id=GL000452" target="_blank">
+                        <span class="link-tag tag-law">法規</span>
+                        <div class="link-title">都市計畫法臺灣省施行細則</div>
+                        <div class="link-desc">內政部法規系統 — 第27條農業區容許使用項目</div>
+                    </a>
+                    <a class="link-card" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=M0020022" target="_blank">
+                        <span class="link-tag tag-law">法規</span>
+                        <div class="link-title">農業用地作農業設施容許使用審查辦法</div>
+                        <div class="link-desc">全國法規資料庫 — 農產品加工室等設施申請基準</div>
+                    </a>
+                    <a class="link-card" href="https://glrs.moi.gov.tw/LawContent.aspx?id=FL003637" target="_blank">
+                        <span class="link-tag tag-law">法規</span>
+                        <div class="link-title">都市計畫農業區變更使用審議規範</div>
+                        <div class="link-desc">內政部法規系統 — 農業區變更使用之審議標準</div>
+                    </a>
+                    <a class="link-card" href="https://law.moa.gov.tw/LawContent.aspx?id=FL014304" target="_blank">
+                        <span class="link-tag tag-law">法規</span>
+                        <div class="link-title">農業用地變更使用審查作業要點</div>
+                        <div class="link-desc">農業部法規系統 — 農業主管機關同意變更使用之審查程序</div>
+                    </a>
+                </div>
+
+                <h3 class="sub-title">申請資源</h3>
+                <div class="link-grid">
+                    <a class="link-card" href="https://mpa.afa.gov.tw/" target="_blank">
+                        <span class="link-tag tag-apply">申請</span>
+                        <div class="link-title">農產品初級加工場資訊系統</div>
+                        <div class="link-desc">農糧署官方平台 — 線上申請、查詢登記證、教育訓練資訊</div>
+                    </a>
+                    <a class="link-card" href="https://mpa.afa.gov.tw/Home/ApplyDescription" target="_blank">
+                        <span class="link-tag tag-apply">申請</span>
+                        <div class="link-title">初級加工場申請登記說明</div>
+                        <div class="link-desc">農糧署 — 申請流程、應備文件、登記證核發說明</div>
+                    </a>
+                    <a class="link-card" href="https://agriculture.yunlin.gov.tw/News_Content.aspx?n=699&s=294469" target="_blank">
+                        <span class="link-tag tag-gov">雲林縣</span>
+                        <div class="link-title">雲林縣 — 初級加工場申請作業流程及文件格式</div>
+                        <div class="link-desc">雲林縣政府農業處 — 在地申請表單及作業流程下載</div>
+                    </a>
+                    <a class="link-card" href="https://www.newsmarket.com.tw/blog/127762/" target="_blank">
+                        <span class="link-tag tag-ref">參考</span>
+                        <div class="link-title">如何申請小農加工場？（上下游新聞）</div>
+                        <div class="link-desc">實務解說 — 作業面積上限60坪、申請資格與流程圖解</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Section 7: 總結 -->
+            <div class="section">
+                <div class="section-title"><span class="num">7</span> 結論</div>
+                <div class="box box-info" style="font-size:15px; line-height:2;">
+                    在都市計畫農業區上直接取得<strong>「工廠登記」幾乎不可行</strong>。最務實的路徑是透過<strong>農產品初級加工場登記制度</strong>，免除工廠登記之要求，但加工作業場所面積上限為 <strong>200 ㎡（約 60 坪）</strong>，且需先向雲林縣政府確認該制度在都市計畫農業區之適用性。<br><br>
+                    建議優先安排與縣府農業處及都市計畫科之會議諮詢，取得明確函覆後再行後續規劃。
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="report-footer">
+            <strong>免責聲明</strong>：本報告係依據現行法規及土地登記謄本資料進行初步分析，僅供參考。實際申請時應以主管機關之正式函覆為準。建議委託專業地政士或律師進行個案評估。<br>
+            報告製作日期：中華民國 115 年 4 月 10 日 ｜ 豐禾地產開發股份有限公司
+        </div>
+
+    </div>
+</body>
+</html>
